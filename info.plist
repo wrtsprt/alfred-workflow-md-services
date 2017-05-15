@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>me.wrtsprt.labs.alfred.md-services</string>
+	<key>connections</key>
+	<dict>
+		<key>5DA5FA80-2BD3-462D-9A3D-7F228EE7F539</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7B395DCD-3261-474F-BBB3-DE5FA665F57E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>7B395DCD-3261-474F-BBB3-DE5FA665F57E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>77A93817-B82C-49D2-BDB9-113DF4EAE255</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>D4595215-B8B3-4BF6-B0AC-1E32F37BDF63</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Raphael Doehring</string>
+	<key>description</key>
+	<string>Alfred access to ttscoff MD services</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>MD - services access</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"title":"new_link","arg":"new_link","subtitle":"Create a new MD link from clipboard"},{"title":"table_from_csv","arg":"table_from_csv","subtitle":"Create MD table from CSV"}]</string>
+				<key>keyword</key>
+				<string>md</string>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>markdown - actions</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>5DA5FA80-2BD3-462D-9A3D-7F228EE7F539</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query = ARGV[0]
+
+result = ''
+puts query
+
+if query == 'new_link'
+	puts `/usr/bin/automator "/Users/rap/Library/Services/md - Links - New Link.workflow"`
+elsif query == 'table_from_csv'
+ 	puts 'tablifiication'
+    puts `/usr/bin/automator -i - "/Users/rap/Library/Services/md\ -\ Tables\ -\ Create\ from\ CSV.workflow" `
+
+else
+   	puts 'else'
+end</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>7B395DCD-3261-474F-BBB3-DE5FA665F57E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>by MD workflow</string>
+				<key>title</key>
+				<string>Your new link is: {query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>77A93817-B82C-49D2-BDB9-113DF4EAE255</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>D4595215-B8B3-4BF6-B0AC-1E32F37BDF63</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Keywords are one of Alfred's most commonly used and most useful ways of launching actions. Set a keyword and connect it to the action(s) you want to perform.
+
+Type your keyword into Alfred, followed by your input text if needed, and you'll be on your way to boosting your productivity!</string>
+	<key>uidata</key>
+	<dict>
+		<key>5DA5FA80-2BD3-462D-9A3D-7F228EE7F539</key>
+		<dict>
+			<key>xpos</key>
+			<integer>140</integer>
+			<key>ypos</key>
+			<integer>270</integer>
+		</dict>
+		<key>77A93817-B82C-49D2-BDB9-113DF4EAE255</key>
+		<dict>
+			<key>xpos</key>
+			<integer>580</integer>
+			<key>ypos</key>
+			<integer>270</integer>
+		</dict>
+		<key>7B395DCD-3261-474F-BBB3-DE5FA665F57E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>360</integer>
+			<key>ypos</key>
+			<integer>270</integer>
+		</dict>
+		<key>D4595215-B8B3-4BF6-B0AC-1E32F37BDF63</key>
+		<dict>
+			<key>xpos</key>
+			<integer>580</integer>
+			<key>ypos</key>
+			<integer>420</integer>
+		</dict>
+	</dict>
+	<key>version</key>
+	<string>1.0</string>
+	<key>webaddress</key>
+	<string>https://github.com/wrtsprt</string>
+</dict>
+</plist>
