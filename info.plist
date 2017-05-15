@@ -4,6 +4,8 @@
 <dict>
 	<key>bundleid</key>
 	<string>me.wrtsprt.labs.alfred.md-services</string>
+	<key>category</key>
+	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>5DA5FA80-2BD3-462D-9A3D-7F228EE7F539</key>
