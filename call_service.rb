@@ -14,6 +14,10 @@ elsif query == 'table_from_csv'
     result = `/usr/bin/automator -i - "/Users/rap/Library/Services/md\ -\ Tables\ -\ Create\ from\ CSV.workflow" <<EOF
 #{the_input}
 EOF`
+elsif query == 'tables_cleanup'
+    result = `/usr/bin/automator -i - "/Users/rap/Library/Services/md - Tables - Cleanup.workflow" <<EOF
+#{the_input}
+EOF`
 else
        puts 'else'
 end

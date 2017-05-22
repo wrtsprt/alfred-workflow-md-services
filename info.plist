@@ -159,7 +159,7 @@
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"title":"new_link","arg":"new_link","subtitle":"Create a new MD link from clipboard"},{"title":"table_from_csv","arg":"table_from_csv","subtitle":"Create MD table from CSV"},{"title":"test","arg":"test","subtitle":"test"}]</string>
+				<string>[{"title":"new_link","arg":"new_link","subtitle":"Create a new MD link from clipboard"},{"title":"table_from_csv","arg":"table_from_csv","subtitle":"Create MD table from CSV"},{"title":"test","arg":"test","subtitle":"test"},{"title":"Tables Cleanup","arg":"tables_cleanup","subtitle":"md - Tables - Cleanup.workflow"}]</string>
 				<key>keyword</key>
 				<string>md</string>
 				<key>runningsubtext</key>
