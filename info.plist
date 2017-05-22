@@ -44,6 +44,32 @@
 				<false/>
 			</dict>
 		</array>
+		<key>8ADDF8F5-FD7C-4CDD-9B25-EE45534AE32D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>EBF5AD14-3608-49D3-AB6E-875F92424050</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>EBF5AD14-3608-49D3-AB6E-875F92424050</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5DA5FA80-2BD3-462D-9A3D-7F228EE7F539</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Raphael Doehring</string>
@@ -58,12 +84,82 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>1</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>46</integer>
+				<key>hotmod</key>
+				<integer>1835008</integer>
+				<key>hotstring</key>
+				<string>M</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>8ADDF8F5-FD7C-4CDD-9B25-EE45534AE32D</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>variables</key>
+				<dict>
+					<key>the_input</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>EBF5AD14-3608-49D3-AB6E-875F92424050</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>by MD workflow</string>
+				<key>title</key>
+				<string>Your new link is: {query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>77A93817-B82C-49D2-BDB9-113DF4EAE255</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"title":"new_link","arg":"new_link","subtitle":"Create a new MD link from clipboard"},{"title":"table_from_csv","arg":"table_from_csv","subtitle":"Create MD table from CSV"}]</string>
+				<string>[{"title":"new_link","arg":"new_link","subtitle":"Create a new MD link from clipboard"},{"title":"table_from_csv","arg":"table_from_csv","subtitle":"Create MD table from CSV"},{"title":"test","arg":"test","subtitle":"test"}]</string>
 				<key>keyword</key>
 				<string>md</string>
 				<key>runningsubtext</key>
@@ -90,26 +186,30 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>query = ARGV[0]
+				<string># Load RVM into a shell session *as a function*
+if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
 
-result = ''
-puts query
+  # First try to load from a user install
+  source "$HOME/.rvm/scripts/rvm"
 
-if query == 'new_link'
-	puts `/usr/bin/automator "/Users/rap/Library/Services/md - Links - New Link.workflow"`
-elsif query == 'table_from_csv'
- 	puts 'tablifiication'
-    puts `/usr/bin/automator -i - "/Users/rap/Library/Services/md\ -\ Tables\ -\ Create\ from\ CSV.workflow" `
+elif [[ -s "/usr/local/rvm/scripts/rvm" ]] ; then
+
+  # Then try to load from a root install
+  source "/usr/local/rvm/scripts/rvm"
 
 else
-   	puts 'else'
-end</string>
+
+  printf "ERROR: An RVM installation was not found.\n"
+
+fi
+
+rvm default do ruby ./call_service.rb $1</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>type</key>
-				<integer>2</integer>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
@@ -117,27 +217,6 @@ end</string>
 			<string>7B395DCD-3261-474F-BBB3-DE5FA665F57E</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<true/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>by MD workflow</string>
-				<key>title</key>
-				<string>Your new link is: {query}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>77A93817-B82C-49D2-BDB9-113DF4EAE255</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -184,12 +263,26 @@ Type your keyword into Alfred, followed by your input text if needed, and you'll
 			<key>ypos</key>
 			<integer>270</integer>
 		</dict>
+		<key>8ADDF8F5-FD7C-4CDD-9B25-EE45534AE32D</key>
+		<dict>
+			<key>xpos</key>
+			<integer>100</integer>
+			<key>ypos</key>
+			<integer>100</integer>
+		</dict>
 		<key>D4595215-B8B3-4BF6-B0AC-1E32F37BDF63</key>
 		<dict>
 			<key>xpos</key>
 			<integer>580</integer>
 			<key>ypos</key>
 			<integer>420</integer>
+		</dict>
+		<key>EBF5AD14-3608-49D3-AB6E-875F92424050</key>
+		<dict>
+			<key>xpos</key>
+			<integer>270</integer>
+			<key>ypos</key>
+			<integer>130</integer>
 		</dict>
 	</dict>
 	<key>version</key>
