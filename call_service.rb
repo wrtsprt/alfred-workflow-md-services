@@ -31,4 +31,4 @@ result_lines = lines.map do |elem|
      end
 end
 
-puts result_lines.compact
+printf result_lines.compact.join("\n")
